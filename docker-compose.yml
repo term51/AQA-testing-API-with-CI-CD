@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:                       # Определение сервисов, которые будут запускаться в контейнерах
+  api-tests:                    # Первый сервис, который отвечает за запуск API-тестов
+    image: api-tests:v1         # Используемое Docker-изображение (если его нет, создастся из Dockerfile)
+    build:
+      context: .                # Контекст сборки — текущая директория (где находится Dockerfile)
+      dockerfile: Dockerfile    # Имя Dockerfile, по которому будет собираться контейнер
+    volumes:
+      - ./:/usr/workspace       # Монтирование текущей директории в контейнер по пути /usr/workspace
+    command: /bin/sh -c "STAGE=$$STAGE pytest -sv --alluredir=allure-results"
+                                # Команда для запуска тестов: передача переменной окружения STAGE и запуск pytest
+                                # - `pytest -sv` — запуск тестов с логами
+                                # - `--alluredir=allure-results` — сохранение результатов в директорию allure-results
+    working_dir: /usr/workspace # Рабочая директория контейнера (где будут выполняться команды)
+    environment:                # Определение переменных окружения для контейнера
+      STAGE: prod               # Установка переменной STAGE (по умолчанию "prod")
+      SUITE: users              # Переменная для указания тестового набора (например, тестирование пользователей)
+      API_TOKEN: ${API_TOKEN}   # Передача токена API из внешней среды (например, из файла .env)
+
+  report:                       # Второй сервис, отвечающий за генерацию отчета Allure
+    image: api-tests:v1         # Использует то же самое изображение, что и `api-tests`
+    volumes:
+      - ./:/usr/workspace       # Монтирование текущей директории в контейнер
+    command: /bin/sh -c "allure generate allure-results --clean -o allure-report"  # Команда для генерации отчета:
+                                # - `allure generate allure-results` — создаёт отчет из сохранённых результатов
+                                # - `--clean` — удаляет предыдущие данные перед генерацией
+                                # - `-o allure-report` — сохраняет отчет в папку allure-report
+    working_dir: /usr/workspace # Рабочая директория в контейнере
