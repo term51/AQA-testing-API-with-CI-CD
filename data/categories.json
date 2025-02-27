@@ -6,12 +6,12 @@
       "name" : "AssertionError: Init failed\nassert 401 == 205\n +  where 401 = <Response [401]>.status_code",
       "children" : [ {
         "name" : "Create new user",
-        "uid" : "1e2becdb884840a1",
+        "uid" : "83ee60874d97d9be",
         "parentUid" : "d8c49c62c628134b23541cb717a516fa",
         "status" : "failed",
         "time" : {
-          "start" : 1740672120265,
-          "stop" : 1740672120265,
+          "start" : 1740673300050,
+          "stop" : 1740673300050,
           "duration" : 0
         },
         "flaky" : false,
