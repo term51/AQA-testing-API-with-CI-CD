@@ -1,0 +1,50 @@
+name: API Tests & Report
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка Docker Compose
+        run: sudo apt-get update && sudo apt-get install -y docker-compose
+
+      - name: Запуск тестов
+        run: docker compose up api-tests || true
+
+      - name: Генерация отчета
+        run: docker compose up report
+
+      - name: Сохранение артефактов Allure
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
+
+  deploy_pages:
+    needs: run_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Загрузка артефактов Allure
+        uses: actions/download-artifact@v3
+        with:
+          name: allure-report
+          path: public
+
+      - name: Деплой на GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
