@@ -1,0 +1,22 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "children" : [ {
+    "name" : "tests.unit_tests.test_users",
+    "children" : [ {
+      "name" : "Create new user",
+      "uid" : "1e2becdb884840a1",
+      "parentUid" : "03dfba4c391062d7cca5757a25aebc93",
+      "status" : "failed",
+      "time" : {
+        "start" : 1740672120265,
+        "stop" : 1740672120265,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "tests.unit_tests.test_users"
+  } ],
+  "name" : "packages"
+}

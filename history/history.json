@@ -1,0 +1,22 @@
+{
+  "0f9fd8d4ef97e891848b2e0476d1c2f0" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "1e2becdb884840a1",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Init failed\nassert 401 == 205\n +  where 401 = <Response [401]>.status_code",
+      "time" : {
+        "start" : 1740672120265,
+        "stop" : 1740672120265,
+        "duration" : 0
+      }
+    } ]
+  }
+}

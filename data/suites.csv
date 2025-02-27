@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Thu Feb 27 16:02:00 GMT 2025","Thu Feb 27 16:02:00 GMT 2025","0","tests.unit_tests","test_users","TestUsers","","","Create new user",""

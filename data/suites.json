@@ -1,0 +1,30 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "children" : [ {
+    "name" : "tests.unit_tests",
+    "children" : [ {
+      "name" : "test_users",
+      "children" : [ {
+        "name" : "TestUsers",
+        "children" : [ {
+          "name" : "Create new user",
+          "uid" : "1e2becdb884840a1",
+          "parentUid" : "969f10e03aa5ec5c2cbb5c2e7ff608b7",
+          "status" : "failed",
+          "time" : {
+            "start" : 1740672120265,
+            "stop" : 1740672120265,
+            "duration" : 0
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "969f10e03aa5ec5c2cbb5c2e7ff608b7"
+      } ],
+      "uid" : "f6232391f58bdb4d60c3e81fe329f53b"
+    } ],
+    "uid" : "a7406de1f354f6f7b6da34f1fc3b8e54"
+  } ],
+  "name" : "suites"
+}
